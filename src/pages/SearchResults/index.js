@@ -20,5 +20,16 @@ export default function SearchResults({ params }) {
     [keyword]
   ); */
 
-  return <>{loading ? <i>Cargando</i> : <ListOfGifs gifs={gifs} />}</>;
+  return (
+    <>
+      {loading ? (
+        <i>Cargando</i>
+      ) : (
+        <>
+          {" "}
+          <h3 className="App-title">{keyword}</h3> <ListOfGifs gifs={gifs} />{" "}
+        </>
+      )}
+    </>
+  );
 }

@@ -18,12 +18,8 @@ function App() {
     >
       <div className="App">
         <section className="App-content">
-          <h1>App</h1>
-
           <Link to="/">Inicio</Link>
-          <Link to="/search/panda">Gifs de pandas</Link>
-          <Link to="/search/mapache">Gifs de mapaches</Link>
-          <Link to="/search/oso">Gifs de osos</Link>
+
           <GifsContextProvider>
             <Route path="/" component={Home} />
             <Route path="/search/:keyword" component={SearchResults} />
