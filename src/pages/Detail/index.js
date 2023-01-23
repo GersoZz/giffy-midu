@@ -1,8 +1,8 @@
 import React from "react";
 /* import GifsContext from "../../context/GifsContext"; */
-import Gif from "../../components/Gif/Gif";
+import Gif from "components/Gif/Gif";
 
-import useGlobalGifs from "../../hooks/useGlobalGifs";
+import useGlobalGifs from "hooks/useGlobalGifs";
 
 export default function Detail({ params }) {
   //const { gifs } = useContext(GifsContext); /* usa el que tiene mas cerca */

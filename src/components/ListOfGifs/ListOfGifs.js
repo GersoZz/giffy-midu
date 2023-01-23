@@ -1,10 +1,11 @@
 import React from "react";
 import Gif from "../Gif/Gif";
+import './styles.css'
 
 export default function ListOfGifs({ gifs }) {
   // ojito eslint-disable-line
   return (
-    <div>
+    <div className="ListOfGifs">
       {gifs.map((singleGif) => (
         <Gif
           key={singleGif.id}

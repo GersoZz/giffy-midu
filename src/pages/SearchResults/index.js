@@ -1,24 +1,12 @@
-import ListOfGifs from "../../components/ListOfGifs/ListOfGifs";
-import { useGifs } from "../../hooks/useGifs";
+import ListOfGifs from "components/ListOfGifs/ListOfGifs";
+import { useGifs } from "hooks/useGifs";
 
 export default function SearchResults({ params }) {
   const { keyword } = params;
 
-  const { loading, gifs } = useGifs({ keyword });
+  const { loading, gifs, setPage } = useGifs({ keyword });
 
-  /*   const [loading, setLoading] = useState(false);
-  const [gifs, setGifs] = useState([]);
-
-  useEffect(
-    function () {
-      setLoading(true);
-      getGifs({ keyword }).then((gifs) => {
-        setGifs(gifs);
-        setLoading(false);
-      });
-    },
-    [keyword]
-  ); */
+  const handleNextPage = () => setPage((prevPage) => prevPage + 1);
 
   return (
     <>
@@ -27,9 +15,12 @@ export default function SearchResults({ params }) {
       ) : (
         <>
           {" "}
-          <h3 className="App-title">{keyword}</h3> <ListOfGifs gifs={gifs} />{" "}
+          <h3 className="App-title">{decodeURI(keyword)}</h3>{" "}
+          <ListOfGifs gifs={gifs} />{" "}
         </>
       )}
+      <br />
+      <button onClick={handleNextPage}>Get next page</button>
     </>
   );
 }

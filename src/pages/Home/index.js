@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useLocation } from "wouter";
 
-import ListOfGifs from "../../components/ListOfGifs/ListOfGifs";
-import { useGifs } from "../../hooks/useGifs";
-import Category from "../../components/Category";
-
-const POPULAR_GIFS = ["Matrix", "Venezuela", "Chile", "Colombia", "Ecuador"];
+import ListOfGifs from "components/ListOfGifs/ListOfGifs";
+import { useGifs } from "hooks/useGifs";
+import TrendingSearches from "components/TrendingSearches";
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
@@ -37,11 +35,10 @@ export default function Home() {
       <div className="App-main">
         <div className="App-results">
           <h3 className="App-title">Última búsqueda</h3>
-          <ListOfGifs gifs={gifs} />
+          <ListOfGifs gifs={gifs} />{/* Aqui deberia ir el loading */}
         </div>
         <div className="App-category">
-          <Category name="Categorias populares" options={POPULAR_GIFS} />
-          <Category name="Mascotas" options={["Pandas", "Mapaches", "Osos"]} />
+          <TrendingSearches />
         </div>
       </div>
     </>
