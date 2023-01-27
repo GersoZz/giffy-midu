@@ -1,8 +1,19 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen, fireEvent } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("home work as expected", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const title = screen.getByText(/Última búsqueda/i);
+  expect(title).toBeInTheDocument();
+});
+
+test("search from could be used", async () => {
+  render(<App />);
+  const input = await screen.findByRole("textbox");
+  const button = await screen.findByRole("button");
+  fireEvent.change(input, { target: { value: "Matrix" } });
+  fireEvent.click(button);
+
+  const title = await screen.findByText("Matrix");
+  expect(title).toBeVisible();
 });
